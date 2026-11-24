@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1D63DC">
+    <title>StudyMate - رفيقك الذكي في المذاكرة</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <div class="bg-decoration circle-1"></div>
+    <div class="bg-decoration circle-2"></div>
+
+    <nav class="navbar">
+        <div class="logo" onclick="showStep('step-welcome')">
+            <div class="logo-icon">📚</div>
+            <span>Study<strong>Mate</strong></span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="javascript:void(0)" class="active" onclick="showStep('step-welcome')">الرئيسية</a></li>
+            <li><a href="javascript:void(0)" onclick="showStep('step-system')">إعداد المواد</a></li>
+        </ul>
+    </nav>
+
+    <div id="step-welcome" class="view-section">
+        <header class="hero">
+            <div class="hero-content">
+                <span class="welcome-tag">✨ رفيقك الذكي في الثانوية</span>
+                <h1>نظّم مذاكرتك وحقق حلمك مع <span class="brand-highlight">StudyMate</span></h1>
+                <p>منصة ذكية لإدارة مهامك الدراسية، متابعة موادك، وقياس ساعات تركيزك الفعلية حسب نظامك الدراسي.</p>
+                <button type="button" class="btn-primary" onclick="showStep('step-system')">
+                    <span>ابدأ رحلتك الدراسية الآن</span><span>←</span>
+                </button>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-illustration" style="font-size: 8rem;">🎓</div>
+            </div>
+        </header>
+
+        <section class="features">
+            <div class="feature-card card-blue" onclick="openPage('step-tasks')">
+                <div class="icon-box">✅</div><h3>إدارة المهام</h3>
+                <p>رتب دروسك ومراجعاتك اليومية بسهولة.</p>
+            </div>
+            <div class="feature-card card-orange" onclick="openPage('step-subjects')">
+                <div class="icon-box">📚</div><h3>تخصيص المواد</h3>
+                <p>موادك الدراسية وإضافة الدروس ومتابعتها.</p>
+            </div>
+            <div class="feature-card card-green" onclick="openPage('step-timer')">
+                <div class="icon-box">⏱️</div><h3>مؤقت التركيز</h3>
+                <p>احسب ساعات مذاكرتك الفعلية بدقة.</p>
+            </div>
+            <div class="feature-card card-purple" onclick="openPage('step-progress')">
+                <div class="icon-box">📊</div><h3>متابعة التقدم</h3>
+                <p>راقب إنجازك الأسبوعي في كل مادة.</p>
+            </div>
+        </section>
+
+        <footer class="motivation-banner">
+            <span>🏆</span><p>كل خطوة في مذاكرتك تقربك من حلمك</p><span>❤️</span>
+        </footer>
+    </div>
+
+    <div id="step-system" class="view-section hidden">
+        <div class="wizard-container">
+            <button type="button" class="btn-back" onclick="showStep('step-welcome')">→ رجوع للرئيسية</button>
+            <div class="wizard-header">
+                <span class="step-badge">الخطوة 1 من 2</span>
+                <h2>اختر نظامك الدراسي وسنتك الدراسية</h2>
+                <p>لنجهز لك المواد الدراسية المخصصة لنظامك بدقة</p>
+            </div>
+            <div class="systems-grid">
+                <div class="system-card">
+                    <div class="system-icon" style="background: #DBEAFE; color: #1D63DC;">🎓</div>
+                    <h3>البكالوريا المصرية</h3><p>النظام الحديث المطور للمرحلة الثانوية</p>
+                    <div class="grade-buttons">
+                        <button type="button" class="grade-btn" onclick="selectGrade('bac1')">أولى بكالوريا</button>
+                        <button type="button" class="grade-btn" onclick="selectGrade('bac2')">تانية بكالوريا</button>
+                    </div>
+                </div>
+                <div class="system-card">
+                    <div class="system-icon" style="background: #FEF3C7; color: #D97706;">📚</div>
+                    <h3>الثانوية العامة المصرية</h3><p>النظام التقليدي للشهادة الثانوية</p>
+                    <div class="grade-buttons">
+                        <button type="button" class="grade-btn" onclick="selectGrade('sec3')">تالتة ثانوي</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="step-track" class="view-section hidden">
+        <div class="wizard-container">
+            <button type="button" class="btn-back" onclick="showStep('step-system')">→ تغيير النظام الدراسي</button>
+            <div class="wizard-header">
+                <span class="step-badge">الخطوة 2 من 2</span>
+                <h2 id="track-step-title">اختر مسارك الدراسي</h2>
+                <p id="selected-grade-subtitle">تانية بكالوريا مصرية</p>
+            </div>
+            <div id="tracks-container" class="tracks-grid"></div>
+            <div id="specialization-box" class="specialization-panel hidden">
+                <h3>✨ اختر مادتك التخصصية في هذا المسار:</h3>
+                <div id="specializations-container" class="spec-grid"></div>
+            </div>
+            <div class="wizard-footer">
+                <button type="button" id="confirm-setup-btn" class="btn-primary hidden" onclick="finishSetup()">حفظ وعرض موادي ←</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="step-subjects" class="view-section hidden"></div>
+    <div id="step-subject-detail" class="view-section hidden"></div>
+    <div id="step-tasks" class="view-section hidden"></div>
+    <div id="step-timer" class="view-section hidden"></div>
+    <div id="step-progress" class="view-section hidden"></div>
+
+    <script src="js/data.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>
